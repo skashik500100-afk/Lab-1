@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import ProfileCard from "./ProfileCard";
+import StatusPanel from "./StatusPanel";
+import "./App.css";
 
 function App() {
+  const [user, setUser] = useState({
+    name: "Shaik Ashik",
+    role: "Frontend Developer",
+    status: "Active"
+  });
+
+  const changeStatus = () => {
+    setUser({
+      ...user,
+      status: user.status === "Active" ? "Inactive" : "Active"
+    });
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <h1 className="title">Profile Dashboard</h1>
+      <ProfileCard name={user.name} role={user.role} />
+      <StatusPanel status={user.status} onChangeStatus={changeStatus} />
     </div>
   );
 }
