@@ -1,4 +1,4 @@
 export default defineConfig({
   plugins: [react()],
-  base: "/ReactGitDeployDemo/", //YourRepoName
+  base: '/lab-1/', //YourRepoName
 })
